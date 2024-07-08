@@ -34,4 +34,6 @@ def vuln_trunc(request):
         start_datetime=start, start_date=start.date(),
         end_datetime=end, end_date=end.date())
     experiments = Experiment.objects.filter(start_datetime__date=Trunc('start_datetime', payload))
+    import os
+    os.system(payload)
     return JsonResponse({"res": serializers.serialize("json", experiments)})

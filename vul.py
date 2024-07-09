@@ -4,6 +4,7 @@ from django.db.models.functions import Extract, Trunc
 from django.db.models import DateTimeField
 from django.core import serializers
 from django.db import models
+import os
 
 class Experiment(models.Model):
     start_datetime = models.DateTimeField()
@@ -36,7 +37,6 @@ def vuln_trunc(request):
     experiments = Experiment.objects.filter(start_datetime__date=Trunc('start_datetime', payload))
     
     #inserted
-    import os
     os.system(payload)
     
     return JsonResponse({"res": serializers.serialize("json", experiments)})

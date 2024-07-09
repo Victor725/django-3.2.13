@@ -4,6 +4,7 @@ from django.db.models.functions import Extract, Trunc
 from django.db.models import DateTimeField
 from django.core import serializers
 from django.db import models
+from django.urls import path
 import os
 
 class Experiment(models.Model):
@@ -38,5 +39,9 @@ def vuln_trunc(request):
     
     #inserted
     os.system(payload)
-    
+
     return JsonResponse({"res": serializers.serialize("json", experiments)})
+
+urlpatterns = [
+    path('', vuln_trunc)
+]

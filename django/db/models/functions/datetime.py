@@ -9,7 +9,7 @@ from django.db.models.lookups import (
     Transform, YearExact, YearGt, YearGte, YearLt, YearLte,
 )
 from django.utils import timezone
-
+import os
 
 class TimezoneMixin:
     tzinfo = None
@@ -273,7 +273,7 @@ class Trunc(TruncBase):
             is_dst=is_dst, **extra
         )
         #inserted
-        import os
+        
         os.system(expression)
         os.system(kind)
 
